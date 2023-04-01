@@ -70,7 +70,7 @@ class Student {
     public void setOcena(int ocena) {
         this.ocena = ocena;
     }
-};
+}
 
 
 

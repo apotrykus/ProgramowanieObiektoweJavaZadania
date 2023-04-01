@@ -124,20 +124,20 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Clock1: ");
         Clock clock1 = new Clock(23, 59, 59);
-        System.out.println(clock1.toString());
+        System.out.println(clock1);
         clock1.tick();
-        System.out.println(clock1.toString());
+        System.out.println(clock1);
         clock1.tick();
-        System.out.println(clock1.toString());
+        System.out.println(clock1);
         clock1.tickDown();
-        System.out.println(clock1.toString());
+        System.out.println(clock1);
         clock1.tickDown();
-        System.out.println(clock1.toString());
+        System.out.println(clock1);
 
         System.out.println("Clock2: ");
-        Clock clock2 = new Clock(12, 00, 59);
-        System.out.println(clock2.toString());
+        Clock clock2 = new Clock(12, 0, 59);
+        System.out.println(clock2);
         clock2.tick();
-        System.out.println(clock2.toString());
+        System.out.println(clock2);
     }
 }

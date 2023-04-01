@@ -5,7 +5,7 @@
 // Wykonawca: Adrianna Potrykus
 
 class Numbers {
-    private int[] nums = new int[3];
+    private final int[] nums = new int[3];
 
     Numbers(int num1, int num2, int num3) {
         this.nums[0] = num1;
@@ -35,19 +35,18 @@ class Numbers {
 }
 
 public class Main {
+    public static void printNumbers(Numbers nums) {
+        System.out.println("Sum: " + nums.sum());
+        System.out.println("Average: " + nums.average());
+        System.out.println("Min: " + nums.min());
+        System.out.println("Max: " + nums.max());
+        System.out.println("Geometric: " + nums.geometric());
+    }
     public static void main(String[] args) {
         Numbers nums1 = new Numbers(5, 5, 5);
-        System.out.println("Sum: " + nums1.sum());
-        System.out.println("Average: " + nums1.average());
-        System.out.println("Min: " + nums1.min());
-        System.out.println("Max: " + nums1.max());
-        System.out.println("Geometric: " + nums1.geometric());
+        printNumbers(nums1);
 
         Numbers nums2 = new Numbers(10, 20, 30);
-        System.out.println("Sum: " + nums2.sum());
-        System.out.println("Average: " + nums2.average());
-        System.out.println("Min: " + nums2.min());
-        System.out.println("Max: " + nums2.max());
-        System.out.println("Geometric: " + nums2.geometric());
+        printNumbers(nums2);
     }
 }
