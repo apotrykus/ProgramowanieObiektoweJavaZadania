@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 abstract class Maszyna {
     protected enum Silnik {
@@ -246,7 +245,7 @@ momentObrotowy);
 }
 
 class ParkMaszynowy {
-    public List<Maszyna> maszyny;
+    public ArrayList<Maszyna> maszyny;
 
     public ParkMaszynowy() {
         maszyny = new ArrayList<>();
