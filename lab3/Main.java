@@ -23,8 +23,8 @@ abstract class Maszyna {
     protected String pojemnoscSilnika;
 
     protected Silnik rodzajSilnika;
-    public Maszyna(String marka, String nazwa, String pojemnoscSilnika, 
-Silnik silnik) {
+    public Maszyna(String marka, String nazwa, String pojemnoscSilnika,
+                   Silnik silnik) {
         this.marka = marka;
         this.nazwa = nazwa;
         this.pojemnoscSilnika = pojemnoscSilnika;
@@ -55,8 +55,8 @@ class Lokomotywa extends Maszyna {
     private final int iloscWagonow;
     private final int iloscKominow;
 
-    public Lokomotywa(String marka, String nazwa, String pojemnoscSilnika, 
-Silnik silnik,
+    public Lokomotywa(String marka, String nazwa, String pojemnoscSilnika,
+                      Silnik silnik,
                       int wagony, int iloscKominow) {
         super(marka, nazwa, pojemnoscSilnika, silnik);
         this.iloscWagonow = wagony;
@@ -77,10 +77,10 @@ class Kosiarka extends Maszyna {
     private boolean czyNaped;
     private int liczbaOstrzy;
 
-    public Kosiarka(String marka, String nazwa, String pojemnoscSilnika, 
-Silnik silnik,
-                    boolean czyMelekser, boolean czyNaped, int 
-liczbaOstrzy) {
+    public Kosiarka(String marka, String nazwa, String pojemnoscSilnika,
+                    Silnik silnik,
+                    boolean czyMelekser, boolean czyNaped, int
+                            liczbaOstrzy) {
         super(marka, nazwa, pojemnoscSilnika, silnik);
         this.czyMelekser = czyMelekser;
         this.czyNaped = czyNaped;
@@ -112,8 +112,8 @@ class Pojazd extends Maszyna {
     protected int nrPojazdu;
     protected static int maxLiczbaPojazdow = 0;
 
-    public Pojazd(String marka, String nazwa, String pojemnoscSilnika, 
-Silnik silnik, double moc,
+    public Pojazd(String marka, String nazwa, String pojemnoscSilnika,
+                  Silnik silnik, double moc,
                   double momentObrotowy) {
         super(marka, nazwa, pojemnoscSilnika, silnik);
         this.moc = moc;
@@ -121,7 +121,9 @@ Silnik silnik, double moc,
         this.nrPojazdu = maxLiczbaPojazdow++;
     }
 
-    public Pojazd() {}
+    public Pojazd() {
+        this.nrPojazdu = maxLiczbaPojazdow++;
+    }
 
     public void setMoc(double moc) {
         this.moc = moc;
@@ -146,6 +148,7 @@ Silnik silnik, double moc,
         System.out.println("rodzaj silnika: " + silnikToString());
         System.out.println("moc: " + moc);
         System.out.println("moment obrotowy: " + momentObrotowy);
+        System.out.println("numer pojazdu: " + nrPojazdu);
     }
 }
 
@@ -171,11 +174,11 @@ class Samochod extends Pojazd {
     protected Segment segment;
     protected int vin;
 
-    public Samochod(String marka, String nazwa, String pojemnoscSilnika, 
-Silnik silnik, double moc,
+    public Samochod(String marka, String nazwa, String pojemnoscSilnika,
+                    Silnik silnik, double moc,
                     double momentObrotowy, Segment segment, int vin) {
-        super(marka, nazwa, pojemnoscSilnika, silnik, moc, 
-momentObrotowy);
+        super(marka, nazwa, pojemnoscSilnika, silnik, moc,
+                momentObrotowy);
         this.segment = segment;
         this.vin = vin;
     }
@@ -188,6 +191,7 @@ momentObrotowy);
         System.out.println("moment obrotowy: " + momentObrotowy);
         System.out.println("segment: " + segmentToString());
         System.out.println("vin: " + vin);
+        System.out.println("numer pojazdu: " + nrPojazdu);
     }
 }
 
@@ -212,11 +216,11 @@ class Jednoslad extends Pojazd {
         }
     }
 
-    public Jednoslad(String marka, String nazwa, String pojemnoscSilnika, 
-Silnik silnik, double moc,
+    public Jednoslad(String marka, String nazwa, String pojemnoscSilnika,
+                     Silnik silnik, double moc,
                      double momentObrotowy, Typ typ) {
-        super(marka, nazwa, pojemnoscSilnika, silnik, moc, 
-momentObrotowy);
+        super(marka, nazwa, pojemnoscSilnika, silnik, moc,
+                momentObrotowy);
         this.typ = typ;
     }
 
@@ -241,6 +245,7 @@ momentObrotowy);
             System.out.println("moment obrotowy: " + momentObrotowy);
         if(typToString() != null)
             System.out.println("segment: " + typToString());
+        System.out.println("numer pojazdu: " + nrPojazdu);
     }
 }
 
@@ -249,8 +254,8 @@ class ParkMaszynowy {
 
     public ParkMaszynowy() {
         maszyny = new ArrayList<>();
-        Lokomotywa adulina = new Lokomotywa("pondolino", "adulina", 
-"1000",
+        Lokomotywa adulina = new Lokomotywa("pondolino", "adulina",
+                "1000",
                 Maszyna.Silnik.PAROWY, 7, 7);
         maszyny.add(adulina);
 
@@ -263,13 +268,13 @@ class ParkMaszynowy {
         maszyny.add(mocnyPojazd);
 
         Samochod superSamochod = new Samochod("BMW", "Seria3", "2000",
-                Maszyna.Silnik.BENZYNOWY, 256.0, 700, Samochod.Segment.C, 
-123456789);
+                Maszyna.Silnik.BENZYNOWY, 256.0, 700, Samochod.Segment.C,
+                123456789);
         maszyny.add(superSamochod);
 
         Jednoslad motocykl = new Jednoslad("Honda", "Bruum", "150",
-                Maszyna.Silnik.BENZYNOWY, 130, 500, 
-Jednoslad.Typ.MotocyklSportowy);
+                Maszyna.Silnik.BENZYNOWY, 130, 500,
+                Jednoslad.Typ.MotocyklSportowy);
         maszyny.add(motocykl);
 
         Jednoslad rower = new Jednoslad();
